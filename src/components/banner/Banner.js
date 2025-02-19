@@ -14,7 +14,7 @@ const Banner = () => {
             <h1>Hi 👋, I'm Parth I. Panchal <strong>Software Developer</strong> </h1>
             <p>I'm a software developer who loves to build things for the web.</p>
             <div className="text-center mt-20">
-                <a href="#" className="btn">Get In Touch</a>
+                <a href="#about" className="btn">Get In Touch</a>
             </div>
         </div>
     </div>
