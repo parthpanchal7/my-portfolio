@@ -12,7 +12,7 @@ const Contact = () => {
                     <a href="mailto:parth.webdev18@gmail.com" className="btn">Zap Me a Note ⚡</a>
                 </div>
                 <div className="social-link text-center">
-                    <a href="https://www.linkedin.com/in/parth-panchal-a3992ba8/" target="_blank">
+                    <a href="https://www.linkedin.com/in/parth-panchal-a3992ba8/" target="_blank" rel="noreferrer">
                         <img src={linkedinIcon} alt="Linkedin" />
                     </a>
                 </div>
