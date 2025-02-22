@@ -5,6 +5,8 @@ import "./components/styles/global.css";
 import Banner from "./components/banner/Banner";
 import About from "./components/about/About";
 import Skills from "./components/skill-snapshots/Skills";
+import Projects from "./components/projects/Projects";
+import Contact from "./components/contact/Contact";
 
 function App() {
   return (
@@ -14,6 +16,8 @@ function App() {
         <Banner />
         <About />
         <Skills />
+        <Projects />
+        <Contact />
       </main>
       <Footer />
     </div>

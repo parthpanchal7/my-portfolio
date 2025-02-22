@@ -1,8 +1,8 @@
 .skills-container {
-    padding-top: 6rem;
-    padding-bottom: 6rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
 }
 
 .skills-grid {
@@ -18,8 +18,9 @@
 .skills-grid li {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
-    column-gap: 0.5rem;
+    align-items: flex-start;
+    gap: 0.5rem;
+    flex-direction: column;
 }
 
 .skills-grid li img {
@@ -34,25 +35,33 @@
     color: #6ee7b7;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 640px) {
+    .skills-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)); /* Two columns */
+    }
     .skills-container {
-        padding-left: 9rem;
-        padding-right: 9rem;
+        padding-left: 2rem;
+        padding-right: 2rem;
     }
 }
 
 @media (min-width: 768px) {
+    .skills-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr)); /* Four columns */
+    }
     .skills-container {
         padding-left: 3rem;
         padding-right: 3rem;
     }
-    .skills-grid {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
+    .skills-grid li {
+        flex-direction: row;
+        align-items: center;
     }
 }
 
-@media (min-width: 640px) and (max-width: 767px) {
-    .skills-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+@media (min-width: 1024px) {
+    .skills-container {
+        padding-left: 9rem;
+        padding-right: 9rem;
     }
 }

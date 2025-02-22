@@ -1,0 +1,41 @@
+.contact-container {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.desc-note {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    margin-top: 1.25rem;
+    margin-bottom: 0;
+    color: #6ee7b7;
+}
+
+.contact-btn, .social-link {
+    margin-top: 48px;
+}
+
+.social-link a {
+    width: 30px;
+    display: inline-block;
+}
+
+@media (min-width: 768px) {
+    .contact-container {
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .contact-container {
+        padding-left: 9rem;
+        padding-right: 9rem;
+    }
+    .desc-note {
+        font-size: 1.25rem;
+        line-height: 1.75rem;
+    }
+}

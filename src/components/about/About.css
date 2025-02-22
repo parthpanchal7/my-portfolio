@@ -1,8 +1,8 @@
 .about-container {
     padding-top: 6rem;
     padding-bottom: 6rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
 }
 
 .about-wrap {
@@ -30,16 +30,9 @@
 
 .about-content p {
     color: #6ee7b7;
-    font-size: 1.2rem;
-    line-height: 1.8rem;
+    font-size: 1rem;
+    line-height: 1.6rem;
     margin-top: 0;
-}
-
-@media (min-width: 1024px) {
-    .about-container {
-        padding-left: 9rem;
-        padding-right: 9rem;
-    }
 }
 
 @media (min-width: 768px) {
@@ -58,5 +51,16 @@
     }
     .about-img {
         margin-bottom: 0;
+    }
+    .about-content p {
+        font-size: 1.2rem;
+        line-height: 1.8rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .about-container {
+        padding-left: 9rem;
+        padding-right: 9rem;
     }
 }
