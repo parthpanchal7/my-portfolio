@@ -31,13 +31,19 @@
 }
 
 .single-project .project-img {
-    height: 230px;
+    height: 240px;
+    overflow: hidden;
 }
 
 .single-project .project-img img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: all .3s;
+}
+
+.single-project:hover .project-img img {
+    transform: scale(1.2);
 }
 
 .single-project h3 {
@@ -57,6 +63,14 @@
 
 .single-project .project-meta {
     padding: 1.5rem;
+}
+
+.load-more-wrapper {
+    margin-top: 40px;
+}
+
+.load-more-wrapper button {
+    cursor: pointer;
 }
 
 @media (min-width: 768px) {
