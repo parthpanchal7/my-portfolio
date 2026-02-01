@@ -87,6 +87,7 @@ img {
     height: 3rem;
     display: inline-flex;
     align-items: center;
+    font-family: var(--font-family);
   }
 
   .btn:hover {
