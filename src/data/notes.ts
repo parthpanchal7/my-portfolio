@@ -1,6 +1,6 @@
-import SmallDetails from "../../content/notes/small-details-interface.mdx";
-import Components from "../../content/notes/component-actually-deserve-to-exist.mdx";
-import DesignToCode from "../../content/notes/design-to-code-translation.mdx";
+import SmallDetails, { note as smallDetailsNote } from "../../content/notes/small-details-interface.mdx";
+import Components, { note as componentsNote } from "../../content/notes/component-actually-deserve-to-exist.mdx";
+import DesignToCode, { note as designToCodeNote } from "../../content/notes/design-to-code-translation.mdx";
 
 export type NoteMeta = {
   slug: string;
@@ -17,9 +17,9 @@ export type Note = NoteMeta & {
 };
 
 export const notes: Note[] = [
-  { ...SmallDetails.note, Content: SmallDetails },
-  { ...Components.note, Content: Components },
-  { ...DesignToCode.note, Content: DesignToCode },
+  { ...smallDetailsNote, Content: SmallDetails },
+  { ...componentsNote, Content: Components },
+  { ...designToCodeNote, Content: DesignToCode },
 ];
 
 export const getNote = (slug: string) => notes.find((item) => item.slug === slug);
