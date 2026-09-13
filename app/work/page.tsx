@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { projects } from "../../src/data/projects";
-import "./work.css";
 
 export const metadata = {
   title: "Work — Parth Panchal",
