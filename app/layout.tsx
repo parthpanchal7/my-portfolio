@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "../src/components/portfolio.css";
+import "./work/work.css";
+import "./work/[slug]/project.css";
 
 export const metadata: Metadata = {
   title: "Parth Panchal — Frontend Developer",
