@@ -1,0 +1,43 @@
+export const note = {
+  slug: "design-to-code-translation",
+  number: "003",
+  category: "Process",
+  title: "Design-to-code is a translation problem.",
+  description: "What gets lost between a polished design file and a responsive browser — and how to avoid it.",
+  date: "2026-09-13",
+  readTime: "6 min read",
+};
+
+# Design-to-code is a translation problem.
+
+A design file describes an interface at a particular set of dimensions. A browser has to make that interface work across thousands of dimensions, devices and input methods.
+
+The job is not to reproduce pixels. It is to preserve the decisions behind them.
+
+## Find the rules behind the screenshot
+
+When I receive a design, I first look for relationships: container widths, spacing rhythm, type scale, alignment and repeated patterns.
+
+Those relationships are more useful than individual pixel measurements because they give the implementation something it can adapt with.
+
+## Responsive behaviour is part of the design
+
+Desktop and mobile should not be treated as two separate posters.
+
+A useful implementation asks what happens when there is less room. Does a two-column layout stack? Does navigation collapse? Does a heading change its line length? Does an image crop differently?
+
+Those are design decisions, even when they happen in CSS.
+
+## The browser will expose assumptions
+
+A design can hide awkward content because the example copy happens to fit. The browser cannot.
+
+Real content exposes assumptions about line length, image ratios, long labels, empty states and component height. That feedback is valuable because it shows where the original visual system needs a rule instead of a fixed value.
+
+## Fidelity is not pixel worship
+
+There is a difference between visual fidelity and copying coordinates.
+
+If the browser needs a different spacing value at 768px to preserve the same hierarchy the design intended at 1440px, that is not a failure of fidelity. It is the correct translation.
+
+The best design-to-code work keeps the intent intact while allowing the implementation to behave like a real interface.
