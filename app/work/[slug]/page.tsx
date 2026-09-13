@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { projects } from "../../../src/data/projects";
-import "./project.css";
 
 export function generateStaticParams() {
   return projects.map((project) => ({ slug: project.slug }));
