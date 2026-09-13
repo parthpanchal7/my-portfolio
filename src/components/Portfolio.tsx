@@ -13,12 +13,8 @@ function Cursor() {
   useEffect(() => {
     const cursor = cursorRef.current;
     if (!cursor || window.matchMedia("(hover: none), (pointer: coarse)").matches) return;
-
     let frame = 0;
-    const move = (event: MouseEvent) => {
-      target.current.x = event.clientX;
-      target.current.y = event.clientY;
-    };
+    const move = (event: MouseEvent) => { target.current.x = event.clientX; target.current.y = event.clientY; };
     const tick = () => {
       current.current.x += (target.current.x - current.current.x) * 0.18;
       current.current.y += (target.current.y - current.current.y) * 0.18;
@@ -33,13 +29,11 @@ function Cursor() {
     };
     const enter = (event: MouseEvent) => updateState(event.target as Element | null);
     const leave = (event: MouseEvent) => updateState(event.relatedTarget as Element | null);
-
     document.addEventListener("mousemove", move);
     document.addEventListener("mouseover", enter);
     document.addEventListener("mouseout", leave);
     document.documentElement.classList.add("cursor-ready");
     frame = requestAnimationFrame(tick);
-
     return () => {
       document.removeEventListener("mousemove", move);
       document.removeEventListener("mouseover", enter);
@@ -48,7 +42,6 @@ function Cursor() {
       document.documentElement.classList.remove("cursor-ready");
     };
   }, []);
-
   return <span ref={cursorRef} className="cursor-dot" aria-hidden="true" />;
 }
 
@@ -68,9 +61,16 @@ function Work() {
   return <section className="work" id="work"><div className="work-inner"><div className="section-head"><h2 className="section-title">WORK</h2><span className="section-meta mono">Selected projects / 04</span></div>{featuredProjects.map((project, index) => <article className="project" key={project.id}><div className="project-number mono">{String(index + 1).padStart(2, "0")}</div><div className="project-grid"><div className="project-visual"><Image src={project.image} alt={project.name} sizes="(max-width: 820px) 100vw, calc(100vw - 430px)" /></div><div className="project-info"><h3>{project.name}</h3><p>{project.description}</p><div className="project-tech mono">{project.technologies.map((item) => <React.Fragment key={item}>{item}<br /></React.Fragment>)}</div><a className="project-link mono" href={`/work/${project.slug}`}>View project ↗</a></div></div></article>)}<a className="all-work mono" href="/work">View all 15 projects ↗</a></div></section>;
 }
 
+type Capability = { label: string; title: string; copy: string; tags: string[] };
+
 function Capabilities() {
-  const items = [["01 / Interfaces", "Interfaces", "Responsive websites, design-to-code implementation and interaction systems that remain coherent across screen sizes.", ["HTML", "CSS", "JavaScript"]], ["02 / Frontend", "Frontend", "React, JavaScript, CSS and component systems shaped around the actual interface rather than abstraction for its own sake.", ["React", "Tailwind", "MUI"]], ["03 / Commerce", "Commerce", "Shopify and WooCommerce storefronts, custom sections and frontend improvements where experience and conversion meet.", ["Shopify", "WooCommerce"]], ["04 / CMS", "CMS", "WordPress builds, custom themes and content-driven websites where the editing experience matters too.", ["WordPress", "ACF", "Custom Themes"]]];
-  return <section className="cap"><div className="cap-inner"><div className="cap-head"><div className="mono">/ 03 — What I build</div><h2>Useful things,<br />built properly.</h2></div><div className="cap-grid">{items.map(([label, title, copy, tags]) => <article className="cap-item" key={title}><span className="mono">{label}</span><h3>{title}</h3><p>{copy}</p><div className="tech-tags">{tags.map((tag) => <span className="tag" key={tag}>{tag}</span>)}</div></article>)}</div></div></section>;
+  const items: Capability[] = [
+    { label: "01 / Interfaces", title: "Interfaces", copy: "Responsive websites, design-to-code implementation and interaction systems that remain coherent across screen sizes.", tags: ["HTML", "CSS", "JavaScript"] },
+    { label: "02 / Frontend", title: "Frontend", copy: "React, JavaScript, CSS and component systems shaped around the actual interface rather than abstraction for its own sake.", tags: ["React", "Tailwind", "MUI"] },
+    { label: "03 / Commerce", title: "Commerce", copy: "Shopify and WooCommerce storefronts, custom sections and frontend improvements where experience and conversion meet.", tags: ["Shopify", "WooCommerce"] },
+    { label: "04 / CMS", title: "CMS", copy: "WordPress builds, custom themes and content-driven websites where the editing experience matters too.", tags: ["WordPress", "ACF", "Custom Themes"] },
+  ];
+  return <section className="cap"><div className="cap-inner"><div className="cap-head"><div className="mono">/ 03 — What I build</div><h2>Useful things,<br />built properly.</h2></div><div className="cap-grid">{items.map((item) => <article className="cap-item" key={item.title}><span className="mono">{item.label}</span><h3>{item.title}</h3><p>{item.copy}</p><div className="tech-tags">{item.tags.map((tag) => <span className="tag" key={tag}>{tag}</span>)}</div></article>)}</div></div></section>;
 }
 
 function Journal() {
