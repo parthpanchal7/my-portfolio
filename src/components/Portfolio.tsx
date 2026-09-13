@@ -1,18 +1,9 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
-import vestedFinance from "../assets/images/vested-finance.png";
-import classmate from "../assets/images/classmate.png";
-import slowbazaar from "../assets/images/slowbazaar.png";
-import lancer from "../assets/images/lancer-new.png";
+import Image from "next/image";
 import parth from "../assets/images/parth.png";
-
-const projects = [
-  { number: "01", title: "Vested Finance", description: "Financial platform frontend with a focus on information clarity, responsive behavior and polished implementation.", tech: ["WORDPRESS", "JAVASCRIPT", "CSS"], image: vestedFinance },
-  { number: "02", title: "ClassMate", description: "React interface built around reusable UI and a straightforward application experience.", tech: ["REACT", "TAILWIND"], image: classmate },
-  { number: "03", title: "SlowBazaar", description: "Shopify storefront work combining commerce requirements with custom frontend interactions.", tech: ["SHOPIFY", "JAVASCRIPT", "CSS"], image: slowbazaar },
-  { number: "04", title: "Lancer", description: "React-based interface with a lighter product feel and component-driven frontend structure.", tech: ["REACT", "JAVASCRIPT", "TAILWIND"], image: lancer },
-];
+import { featuredProjects } from "../data/projects";
 
 function Cursor() {
   const cursorRef = useRef<HTMLSpanElement | null>(null);
@@ -74,16 +65,11 @@ function Intro() {
 }
 
 function Work() {
-  return <section className="work" id="work"><div className="work-inner"><div className="section-head"><h2 className="section-title">WORK</h2><span className="section-meta mono">Selected projects / 04</span></div>{projects.map((project) => <article className="project" key={project.number}><div className="project-number mono">{project.number}</div><div className="project-grid"><div className="project-visual"><img src={project.image.src} alt={project.title} /></div><div className="project-info"><h3>{project.title}</h3><p>{project.description}</p><div className="project-tech mono">{project.tech.map((item) => <React.Fragment key={item}>{item}<br /></React.Fragment>)}</div><a className="project-link mono" href="#">View project ↗</a></div></div></article>)}<a className="all-work mono" href="#">View all 15 projects ↗</a></div></section>;
+  return <section className="work" id="work"><div className="work-inner"><div className="section-head"><h2 className="section-title">WORK</h2><span className="section-meta mono">Selected projects / 04</span></div>{featuredProjects.map((project, index) => <article className="project" key={project.id}><div className="project-number mono">{String(index + 1).padStart(2, "0")}</div><div className="project-grid"><div className="project-visual"><Image src={project.image} alt={project.name} sizes="(max-width: 820px) 100vw, calc(100vw - 430px)" /></div><div className="project-info"><h3>{project.name}</h3><p>{project.description}</p><div className="project-tech mono">{project.technologies.map((item) => <React.Fragment key={item}>{item}<br /></React.Fragment>)}</div><a className="project-link mono" href={`/work/${project.slug}`}>View project ↗</a></div></div></article>)}<a className="all-work mono" href="/work">View all 15 projects ↗</a></div></section>;
 }
 
 function Capabilities() {
-  const items = [
-    ["01 / Interfaces", "Interfaces", "Responsive websites, design-to-code implementation and interaction systems that remain coherent across screen sizes.", ["HTML", "CSS", "JavaScript"]],
-    ["02 / Frontend", "Frontend", "React, JavaScript, CSS and component systems shaped around the actual interface rather than abstraction for its own sake.", ["React", "Tailwind", "MUI"]],
-    ["03 / Commerce", "Commerce", "Shopify and WooCommerce storefronts, custom sections and frontend improvements where experience and conversion meet.", ["Shopify", "WooCommerce"]],
-    ["04 / CMS", "CMS", "WordPress builds, custom themes and content-driven websites where the editing experience matters too.", ["WordPress", "ACF", "Custom Themes"]],
-  ];
+  const items = [["01 / Interfaces", "Interfaces", "Responsive websites, design-to-code implementation and interaction systems that remain coherent across screen sizes.", ["HTML", "CSS", "JavaScript"]], ["02 / Frontend", "Frontend", "React, JavaScript, CSS and component systems shaped around the actual interface rather than abstraction for its own sake.", ["React", "Tailwind", "MUI"]], ["03 / Commerce", "Commerce", "Shopify and WooCommerce storefronts, custom sections and frontend improvements where experience and conversion meet.", ["Shopify", "WooCommerce"]], ["04 / CMS", "CMS", "WordPress builds, custom themes and content-driven websites where the editing experience matters too.", ["WordPress", "ACF", "Custom Themes"]]];
   return <section className="cap"><div className="cap-inner"><div className="cap-head"><div className="mono">/ 03 — What I build</div><h2>Useful things,<br />built properly.</h2></div><div className="cap-grid">{items.map(([label, title, copy, tags]) => <article className="cap-item" key={title}><span className="mono">{label}</span><h3>{title}</h3><p>{copy}</p><div className="tech-tags">{tags.map((tag) => <span className="tag" key={tag}>{tag}</span>)}</div></article>)}</div></div></section>;
 }
 
@@ -96,7 +82,7 @@ function Philosophy() {
 }
 
 function About() {
-  return <section className="about" id="about"><div className="about-inner"><div className="about-photo"><img src={parth.src} alt="Parth Panchal" /></div><div className="about-copy"><div className="mono">/ 06 — About Parth</div><h2>FRONTEND<br />DEVELOPER.</h2><p>I'm Parth Panchal. I enjoy the part between a design file and a finished interface — taking a visual idea and figuring out how it should actually behave in the browser.</p><div className="about-details mono"><span>India</span><span>/</span><span>Frontend Development</span><span>/</span><span>React / WordPress / Shopify</span></div><div className="about-links mono"><a href="https://github.com/parthpanchal7/my-portfolio">GitHub ↗</a><a href="https://www.linkedin.com/in/parth-panchal-a3992ba8/">LinkedIn ↗</a></div></div></div></section>;
+  return <section className="about" id="about"><div className="about-inner"><div className="about-photo"><Image src={parth} alt="Parth Panchal" sizes="(max-width: 820px) 100vw, 460px" /></div><div className="about-copy"><div className="mono">/ 06 — About Parth</div><h2>FRONTEND<br />DEVELOPER.</h2><p>I'm Parth Panchal. I enjoy the part between a design file and a finished interface — taking a visual idea and figuring out how it should actually behave in the browser.</p><div className="about-details mono"><span>India</span><span>/</span><span>Frontend Development</span><span>/</span><span>React / WordPress / Shopify</span></div><div className="about-links mono"><a href="https://github.com/parthpanchal7/my-portfolio">GitHub ↗</a><a href="https://www.linkedin.com/in/parth-panchal-a3992ba8/">LinkedIn ↗</a></div></div></div></section>;
 }
 
 function Contact() {
