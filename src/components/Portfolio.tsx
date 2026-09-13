@@ -1,10 +1,11 @@
+"use client";
+
 import React, { useEffect, useRef } from "react";
 import vestedFinance from "../assets/images/vested-finance.png";
 import classmate from "../assets/images/classmate.png";
 import slowbazaar from "../assets/images/slowbazaar.png";
 import lancer from "../assets/images/lancer-new.png";
 import parth from "../assets/images/parth.png";
-import "./portfolio.css";
 
 const projects = [
   { number: "01", title: "Vested Finance", description: "Financial platform frontend with a focus on information clarity, responsive behavior and polished implementation.", tech: ["WORDPRESS", "JAVASCRIPT", "CSS"], image: vestedFinance },
@@ -14,7 +15,7 @@ const projects = [
 ];
 
 function Cursor() {
-  const cursorRef = useRef(null);
+  const cursorRef = useRef<HTMLSpanElement | null>(null);
   const target = useRef({ x: -100, y: -100 });
   const current = useRef({ x: -100, y: -100 });
 
@@ -22,8 +23,8 @@ function Cursor() {
     const cursor = cursorRef.current;
     if (!cursor || window.matchMedia("(hover: none), (pointer: coarse)").matches) return;
 
-    let frame;
-    const move = (event) => {
+    let frame = 0;
+    const move = (event: MouseEvent) => {
       target.current.x = event.clientX;
       target.current.y = event.clientY;
     };
@@ -33,19 +34,14 @@ function Cursor() {
       cursor.style.transform = `translate3d(${current.current.x}px, ${current.current.y}px, 0)`;
       frame = requestAnimationFrame(tick);
     };
-    const enter = (event) => {
-      const heading = event.target.closest("h1, h2, h3, h4, h5, h6");
-      const link = event.target.closest("a, button");
+    const updateState = (element: Element | null) => {
+      const heading = element?.closest("h1, h2, h3, h4, h5, h6");
+      const link = element?.closest("a, button");
       cursor.classList.toggle("is-heading", !!heading);
       cursor.classList.toggle("is-link", !!link && !heading);
     };
-    const leave = (event) => {
-      if (!event.relatedTarget) return;
-      const heading = event.relatedTarget.closest?.("h1, h2, h3, h4, h5, h6");
-      const link = event.relatedTarget.closest?.("a, button");
-      cursor.classList.toggle("is-heading", !!heading);
-      cursor.classList.toggle("is-link", !!link && !heading);
-    };
+    const enter = (event: MouseEvent) => updateState(event.target as Element | null);
+    const leave = (event: MouseEvent) => updateState(event.relatedTarget as Element | null);
 
     document.addEventListener("mousemove", move);
     document.addEventListener("mouseover", enter);
@@ -78,7 +74,7 @@ function Intro() {
 }
 
 function Work() {
-  return <section className="work" id="work"><div className="work-inner"><div className="section-head"><h2 className="section-title">WORK</h2><span className="section-meta mono">Selected projects / 04</span></div>{projects.map((project) => <article className="project" key={project.number}><div className="project-number mono">{project.number}</div><div className="project-grid"><div className="project-visual"><img src={project.image} alt={project.title} /></div><div className="project-info"><h3>{project.title}</h3><p>{project.description}</p><div className="project-tech mono">{project.tech.map((item) => <React.Fragment key={item}>{item}<br /></React.Fragment>)}</div><a className="project-link mono" href="#">View project ↗</a></div></div></article>)}<a className="all-work mono" href="#">View all 15 projects ↗</a></div></section>;
+  return <section className="work" id="work"><div className="work-inner"><div className="section-head"><h2 className="section-title">WORK</h2><span className="section-meta mono">Selected projects / 04</span></div>{projects.map((project) => <article className="project" key={project.number}><div className="project-number mono">{project.number}</div><div className="project-grid"><div className="project-visual"><img src={project.image.src} alt={project.title} /></div><div className="project-info"><h3>{project.title}</h3><p>{project.description}</p><div className="project-tech mono">{project.tech.map((item) => <React.Fragment key={item}>{item}<br /></React.Fragment>)}</div><a className="project-link mono" href="#">View project ↗</a></div></div></article>)}<a className="all-work mono" href="#">View all 15 projects ↗</a></div></section>;
 }
 
 function Capabilities() {
@@ -100,7 +96,7 @@ function Philosophy() {
 }
 
 function About() {
-  return <section className="about" id="about"><div className="about-inner"><div className="about-photo"><img src={parth} alt="Parth Panchal" /></div><div className="about-copy"><div className="mono">/ 06 — About Parth</div><h2>FRONTEND<br />DEVELOPER.</h2><p>I'm Parth Panchal. I enjoy the part between a design file and a finished interface — taking a visual idea and figuring out how it should actually behave in the browser.</p><div className="about-details mono"><span>India</span><span>/</span><span>Frontend Development</span><span>/</span><span>React / WordPress / Shopify</span></div><div className="about-links mono"><a href="https://github.com/parthpanchal7/my-portfolio">GitHub ↗</a><a href="https://www.linkedin.com/in/parth-panchal-a3992ba8/">LinkedIn ↗</a></div></div></div></section>;
+  return <section className="about" id="about"><div className="about-inner"><div className="about-photo"><img src={parth.src} alt="Parth Panchal" /></div><div className="about-copy"><div className="mono">/ 06 — About Parth</div><h2>FRONTEND<br />DEVELOPER.</h2><p>I'm Parth Panchal. I enjoy the part between a design file and a finished interface — taking a visual idea and figuring out how it should actually behave in the browser.</p><div className="about-details mono"><span>India</span><span>/</span><span>Frontend Development</span><span>/</span><span>React / WordPress / Shopify</span></div><div className="about-links mono"><a href="https://github.com/parthpanchal7/my-portfolio">GitHub ↗</a><a href="https://www.linkedin.com/in/parth-panchal-a3992ba8/">LinkedIn ↗</a></div></div></div></section>;
 }
 
 function Contact() {
