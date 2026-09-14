@@ -1,12 +1,14 @@
+import Link from "next/link";
+
 export default function Header() {
   return (
     <header className="site-header">
-      <a className="logo-text" href="#">P@RTH</a>
+      <Link className="logo-text" href="/">P@RTH</Link>
       <nav className="nav">
-        <a href="#work">Work</a>
-        <a href="#journal">Notes</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact <span>↗</span></a>
+        <Link href="/#work">Work</Link>
+        <Link href="/notes">Notes</Link>
+        <Link href="/#about">About</Link>
+        <Link href="/#contact">Contact <span>↗</span></Link>
       </nav>
     </header>
   );
