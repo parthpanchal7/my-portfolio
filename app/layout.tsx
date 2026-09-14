@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "../src/components/portfolio.css";
 import "./work/work.css";
 import "./work/[slug]/project.css";
+import "./work/[slug]/case-study.css";
 import "./notes/notes.css";
 import SiteChrome from "../src/components/navigation/SiteChrome";
 
