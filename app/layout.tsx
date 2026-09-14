@@ -4,6 +4,7 @@ import "./work/work.css";
 import "./work/[slug]/project.css";
 import "./work/[slug]/case-study.css";
 import "./notes/notes.css";
+import "./mobile.css";
 import SiteChrome from "../src/components/navigation/SiteChrome";
 
 export const metadata: Metadata = {
