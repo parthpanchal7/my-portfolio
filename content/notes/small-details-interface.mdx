@@ -1,49 +1,43 @@
 export const note = {
-  slug: "small-details-interface",
+  slug: "pixel-perfect-without-the-pixel-trap",
   number: "001",
-  category: "Frontend",
-  title: "The small details that make an interface feel finished.",
-  description: "Spacing, typography, states and transitions — the things users notice without necessarily knowing why.",
-  date: "2026-09-13",
-  readTime: "5 min read",
+  category: "Frontend / WordPress",
+  title: "Pixel-perfect work without falling into the pixel trap.",
+  description: "What I actually check when turning a Figma design into responsive Elementor or WordPress frontend work.",
+  date: "2026-09-16",
+  readTime: "6 min read",
 };
 
-# The small details that make an interface feel finished.
+# Pixel-perfect work without falling into the pixel trap.
 
-A page can have the right layout, the right colours and all the expected interactions and still feel unfinished.
+A lot of my frontend work starts with a design file and a very simple instruction: make the website look like this.
 
-Usually, the missing part is not another feature. It is the collection of small decisions around the interface: how close a label sits to its value, what happens between hover and click, how a heading breaks at a narrower width, or whether an empty state looks intentional.
+That sounds straightforward until the design has to survive an actual browser. The desktop screenshot might look perfect at one width, but the real job is making the same visual decisions hold together on laptops, tablets and phones.
 
-## Start with rhythm
+## I start with the system, not the pixels
 
-I tend to notice spacing before I notice almost anything else. A consistent rhythm gives a page a quiet structure even when the user never consciously sees the grid.
+When I work from Figma, I first look for the things that repeat: container widths, spacing, typography, button styles, image ratios and section relationships.
 
-That does not mean every gap needs to be identical. Related things should feel related; unrelated things should have enough separation to become distinct.
+That matters even more when the implementation is WordPress or Elementor. If I start copying individual positions without understanding the underlying spacing system, I usually end up with a page that looks right at one viewport and starts fighting me everywhere else.
 
-## States are part of the design
+## Elementor still needs frontend thinking
 
-A button is not just its resting state. Links, inputs, menus, cards and navigation all have moments between states.
+Elementor can get a lot of the structure on the page quickly, but it does not remove the need for CSS decisions.
 
-At minimum, think through:
+I still check line breaks, responsive overrides, section widths, typography, hover states and the little gaps that make two elements feel like they belong together.
 
-- default
-- hover
-- focus
-- active
-- disabled
-- loading
-- error or empty
+The goal is not to fight the builder. It is to use it for the parts it handles well and take control when the browser needs something more precise.
 
-A useful interface makes those states feel like parts of the same system rather than afterthoughts added at the end.
+## The screenshot is not the interface
 
-## Motion should explain something
+A design is usually a snapshot. A website is a system.
 
-A transition earns its place when it helps the user understand a change. It can show where something came from, what opened, or what became active.
+If a heading becomes two lines instead of one, if a card description gets longer, or if a navigation item no longer fits, the implementation has to respond without losing the hierarchy of the design.
 
-If removing an animation makes the interface harder to understand, it was probably doing useful work. If nothing changes except that the page looks more impressive, I usually question it.
+That is why I treat responsive behavior as part of the build rather than a final checklist item.
 
-## The last ten percent
+## The last pass is where the quality shows
 
-The final polish is rarely one dramatic effect. It is checking the details repeatedly at real viewport sizes, fixing awkward line breaks, tightening alignment, and making sure the interface still feels deliberate when JavaScript or motion is unavailable.
+My final checks are usually unglamorous: compare real viewport sizes, inspect awkward spacing, test hover and focus states, check long content and look for the one breakpoint where everything suddenly feels wrong.
 
-That is the part of frontend work I enjoy most: turning something that technically works into something that feels considered.
+Pixel-perfect frontend work is not about worshipping a screenshot. It is about getting close to the intended visual result while still building something that behaves like a real website.
