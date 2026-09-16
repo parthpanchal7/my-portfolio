@@ -10,8 +10,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const note = getNote(slug);
   return note
-    ? { title: `${note.title} — Parth Panchal`, description: note.description }
-    : { title: "Note — Parth Panchal" };
+    ? { title: note.title, description: note.description, alternates: { canonical: `/notes/${note.slug}` } }
+    : { title: "Workbench entry" };
 }
 
 export default async function NotePage({ params }: { params: Promise<{ slug: string }> }) {
@@ -27,7 +27,7 @@ export default async function NotePage({ params }: { params: Promise<{ slug: str
     <main className="note-page">
       <div className="note-page-inner">
         <div className="note-page-top mono">
-          <Link href="/notes">← All notes</Link>
+          <Link href="/notes">← Workbench</Link>
           <span>{note.number} / {note.category}</span>
         </div>
 
@@ -42,8 +42,8 @@ export default async function NotePage({ params }: { params: Promise<{ slug: str
         </article>
 
         <footer className="note-page-footer">
-          <Link className="mono" href="/notes">← All notes</Link>
-          {nextNote ? <Link className="mono" href={`/notes/${nextNote.slug}`}>Next note →</Link> : <Link className="mono" href="/">Back home →</Link>}
+          <Link className="mono" href="/notes">← Workbench</Link>
+          {nextNote ? <Link className="mono" href={`/notes/${nextNote.slug}`}>Next entry →</Link> : <Link className="mono" href="/">Back home →</Link>}
         </footer>
       </div>
     </main>
