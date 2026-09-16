@@ -2,19 +2,19 @@ import Link from "next/link";
 import { notes } from "../../src/data/notes";
 
 export const metadata = {
-  title: "Notes — Parth Panchal",
-  description: "Frontend notes, experiments and things learned by Parth Panchal.",
+  title: "Workbench",
+  description: "Parth Panchal's frontend workbench: practical notes on WordPress, React, Shopify, responsive UI and debugging.",
 };
 
 export default function NotesPage() {
   return (
     <main className="notes-page">
       <div className="notes-page-inner">
-        <div className="notes-page-top mono"><Link href="/">← P@RTH</Link><span>Notes / {String(notes.length).padStart(2, "0")} entries</span></div>
+        <div className="notes-page-top mono"><Link href="/">← P@RTH</Link><span>Workbench / {String(notes.length).padStart(2, "0")} entries</span></div>
         <header className="notes-heading">
-          <span className="mono">/ Working notes</span>
-          <h1>THINGS I<br /><span>NOTICE, BUILD &amp; LEARN.</span></h1>
-          <p>A running notebook about frontend work — interfaces, React, design-to-code and the decisions between the lines.</p>
+          <span className="mono">/ The workbench</span>
+          <h1>THINGS I<br /><span>BUILD, BREAK &amp; FIGURE OUT.</span></h1>
+          <p>A working collection of frontend lessons from the browser: WordPress, React, Shopify, responsive UI, debugging and the small decisions that show up in real projects.</p>
         </header>
 
         <div className="notes-list">
@@ -25,7 +25,7 @@ export default function NotesPage() {
                 <div className="note-meta mono"><span>{note.category}</span><span>{note.date}</span></div>
                 <h2><Link href={`/notes/${note.slug}`}>{note.title}</Link></h2>
                 <p>{note.description}</p>
-                <div className="note-row-footer"><Link className="mono" href={`/notes/${note.slug}`}>Read note ↗</Link><span className="mono">{note.readTime}</span></div>
+                <div className="note-row-footer"><Link className="mono" href={`/notes/${note.slug}`}>Read entry ↗</Link><span className="mono">{note.readTime}</span></div>
               </div>
             </article>
           ))}
