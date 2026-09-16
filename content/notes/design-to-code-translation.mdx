@@ -1,43 +1,41 @@
 export const note = {
-  slug: "design-to-code-translation",
+  slug: "debugging-the-last-ten-percent",
   number: "003",
-  category: "Process",
-  title: "Design-to-code is a translation problem.",
-  description: "What gets lost between a polished design file and a responsive browser — and how to avoid it.",
-  date: "2026-09-13",
-  readTime: "6 min read",
+  category: "Debugging / Frontend",
+  title: "The last ten percent is usually where the real frontend work starts.",
+  description: "Responsive bugs, browser quirks, third-party scripts and the small fixes that make a site feel production-ready.",
+  date: "2026-09-16",
+  readTime: "7 min read",
 };
 
-# Design-to-code is a translation problem.
+# The last ten percent is usually where the real frontend work starts.
 
-A design file describes an interface at a particular set of dimensions. A browser has to make that interface work across thousands of dimensions, devices and input methods.
+The first version of a website is rarely the difficult part.
 
-The job is not to reproduce pixels. It is to preserve the decisions behind them.
+Getting the page on screen is usually straightforward. The interesting work starts when the design meets real content, real browsers, existing WordPress plugins, Shopify behavior, caching, third-party scripts and a phone that is not the size of the design file.
 
-## Find the rules behind the screenshot
+## Bugs rarely live where you expect them
 
-When I receive a design, I first look for relationships: container widths, spacing rhythm, type scale, alignment and repeated patterns.
+A broken layout can come from a CSS rule, but it can also come from a parent creating a new containing block, a theme style winning the cascade, an AJAX response changing markup, a plugin adding a wrapper or a cached asset serving an older version of the page.
 
-Those relationships are more useful than individual pixel measurements because they give the implementation something it can adapt with.
+I have learned to debug from the browser outward instead of immediately rewriting the component that looks suspicious.
 
-## Responsive behaviour is part of the design
+## I check the rendered result first
 
-Desktop and mobile should not be treated as two separate posters.
+Before changing code, I want to know what the browser actually received.
 
-A useful implementation asks what happens when there is less room. Does a two-column layout stack? Does navigation collapse? Does a heading change its line length? Does an image crop differently?
+That means checking the DOM, computed styles, network requests, console errors and the element's ancestors. On WordPress projects, I also check whether a theme or plugin is adding behavior I did not write.
 
-Those are design decisions, even when they happen in CSS.
+That small discipline prevents a lot of blind CSS changes.
 
-## The browser will expose assumptions
+## Responsive bugs are often relationship bugs
 
-A design can hide awkward content because the example copy happens to fit. The browser cannot.
+Something being 12px too far to the left is not always a 12px problem.
 
-Real content exposes assumptions about line length, image ratios, long labels, empty states and component height. That feedback is valuable because it shows where the original visual system needs a rule instead of a fixed value.
+It can be the wrong container, an unexpected width, a flex alignment rule or a parent with overflow. Fixing the relationship instead of the symptom is what keeps the fix from breaking another viewport.
 
-## Fidelity is not pixel worship
+## Production-ready means boring in the right places
 
-There is a difference between visual fidelity and copying coordinates.
+I want the final pass to be uneventful. No unexpected horizontal scroll, no broken menu, no layout jump when content changes, no console errors that should not exist and no interaction that only works because the mouse happened to be in the right place.
 
-If the browser needs a different spacing value at 768px to preserve the same hierarchy the design intended at 1440px, that is not a failure of fidelity. It is the correct translation.
-
-The best design-to-code work keeps the intent intact while allowing the implementation to behave like a real interface.
+The best debugging result is often invisible: the site simply behaves the way it should.
