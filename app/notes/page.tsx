@@ -4,6 +4,7 @@ import { notes } from "../../src/data/notes";
 export const metadata = {
   title: "Workbench",
   description: "Parth Panchal's frontend workbench: practical notes on WordPress, React, Shopify, responsive UI and debugging.",
+  alternates: { canonical: "/notes" },
 };
 
 export default function NotesPage() {
