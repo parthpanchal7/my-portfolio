@@ -11,8 +11,18 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const project = projects.find((item) => item.slug === slug);
   return project
-    ? { title: `${project.name} — Parth Panchal`, description: project.description }
-    : { title: "Project — Parth Panchal" };
+    ? {
+        title: project.name,
+        description: project.description,
+        alternates: { canonical: `/work/${project.slug}` },
+        openGraph: {
+          type: "article",
+          title: `${project.name} — Parth Panchal`,
+          description: project.description,
+          images: [{ url: project.image.src, alt: `${project.name} project preview` }],
+        },
+      }
+    : { title: "Project" };
 }
 
 function getScope(project: (typeof projects)[number]) {
@@ -108,27 +118,16 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         </div>
 
         <section className="project-page-details" aria-label="Project details">
-          <div>
-            <span className="mono">Role</span>
-            <strong>Frontend development</strong>
-          </div>
-          <div>
-            <span className="mono">Platform</span>
-            <strong>{project.platform}</strong>
-          </div>
-          <div>
-            <span className="mono">Stack</span>
-            <strong>{project.technologies.join(" / ")}</strong>
-          </div>
+          <div><span className="mono">Role</span><strong>Frontend development</strong></div>
+          <div><span className="mono">Platform</span><strong>{project.platform}</strong></div>
+          <div><span className="mono">Stack</span><strong>{project.technologies.join(" / ")}</strong></div>
         </section>
 
         <section className="project-case-study">
           <div className="project-section-label mono">01 / Scope</div>
           <div className="project-section-content">
             <h2>What I worked on</h2>
-            <ul>
-              {scope.map((item) => <li key={item}>{item}</li>)}
-            </ul>
+            <ul>{scope.map((item) => <li key={item}>{item}</li>)}</ul>
           </div>
         </section>
 
@@ -136,9 +135,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           <div className="project-section-label mono">02 / Implementation</div>
           <div className="project-section-content">
             <h2>From design to browser</h2>
-            <div className="project-copy-stack">
-              {implementation.map((item) => <p key={item}>{item}</p>)}
-            </div>
+            <div className="project-copy-stack">{implementation.map((item) => <p key={item}>{item}</p>)}</div>
           </div>
         </section>
 
@@ -146,28 +143,13 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           <div className="project-section-label mono">03 / Takeaway</div>
           <div className="project-section-content">
             <h2>The frontend is part of the product.</h2>
-            <p>
-              The work on {project.name} was not only about making a page match a design. It was about making the interface hold together across content, interaction, platform constraints and different screen sizes.
-            </p>
+            <p>The work on {project.name} was not only about making a page match a design. It was about making the interface hold together across content, interaction, platform constraints and different screen sizes.</p>
           </div>
         </section>
 
         <nav className="project-next-nav" aria-label="Project navigation">
-          {previous ? (
-            <Link href={`/work/${previous.slug}`} className="project-nav-item">
-              <span className="mono">← Previous</span>
-              <strong>{previous.name}</strong>
-            </Link>
-          ) : <span />}
-          {next ? (
-            <Link href={`/work/${next.slug}`} className="project-nav-item project-nav-next">
-              <span className="mono">Next →</span>
-              <strong>{next.name}</strong>
-            </Link>
-          ) : <Link href="/work" className="project-nav-item project-nav-next">
-            <span className="mono">Finish / All work →</span>
-            <strong>View the complete archive</strong>
-          </Link>}
+          {previous ? <Link href={`/work/${previous.slug}`} className="project-nav-item"><span className="mono">← Previous</span><strong>{previous.name}</strong></Link> : <span />}
+          {next ? <Link href={`/work/${next.slug}`} className="project-nav-item project-nav-next"><span className="mono">Next →</span><strong>{next.name}</strong></Link> : <Link href="/work" className="project-nav-item project-nav-next"><span className="mono">Finish / All work →</span><strong>View the complete archive</strong></Link>}
         </nav>
       </div>
     </main>
