@@ -3,8 +3,9 @@ import Link from "next/link";
 import { projects } from "../../src/data/projects";
 
 export const metadata = {
-  title: "Work — Parth Panchal",
-  description: "Selected frontend, commerce and CMS projects by Parth Panchal.",
+  title: "Work",
+  description: "Selected frontend projects by Parth Panchal across React, WordPress, Shopify, WooCommerce and JavaScript.",
+  alternates: { canonical: "/work" },
 };
 
 export default function WorkPage() {
@@ -22,7 +23,7 @@ export default function WorkPage() {
             <article className="work-card" key={project.id}>
               <div className="work-card-number mono">{String(index + 1).padStart(2, "0")}</div>
               <Link href={`/work/${project.slug}`} className="work-card-image">
-                <Image src={project.image} alt={project.name} sizes="(max-width: 820px) 100vw, 65vw" />
+                <Image src={project.image} alt={`${project.name} project preview`} sizes="(max-width: 820px) 100vw, 65vw" />
               </Link>
               <div className="work-card-info">
                 <span className="mono">{project.platform}</span>
