@@ -8,8 +8,8 @@ export default function Journal() {
     <section className="journal" id="journal">
       <div className="journal-inner">
         <div className="journal-head">
-          <h2>JOURNAL</h2>
-          <span className="mono">Ideas / experiments / things learned</span>
+          <h2>WORKBENCH</h2>
+          <span className="mono">Real frontend work / lessons / fixes</span>
         </div>
         <div className="journal-grid">
           <article className="journal-feature">
@@ -19,7 +19,7 @@ export default function Journal() {
               <p>{latest.description}</p>
               <div className="journal-visual" />
             </div>
-            <div className="note-footer"><Link className="read mono" href={`/notes/${latest.slug}`}>Read article ↗</Link><span className="note-date mono">{latest.readTime}</span></div>
+            <div className="note-footer"><Link className="read mono" href={`/notes/${latest.slug}`}>Read entry ↗</Link><span className="note-date mono">{latest.readTime}</span></div>
           </article>
           {secondary.map((note) => (
             <article className="journal-small" key={note.slug}>
@@ -30,7 +30,7 @@ export default function Journal() {
             </article>
           ))}
         </div>
-        <div style={{ marginTop: 28 }}><Link className="mono" href="/notes">View all notes ↗</Link></div>
+        <div style={{ marginTop: 28 }}><Link className="mono" href="/notes">Open the workbench ↗</Link></div>
       </div>
     </section>
   );
