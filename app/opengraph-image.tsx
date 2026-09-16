@@ -24,7 +24,7 @@ export default function Image() {
         <div style={{ fontSize: 92, fontWeight: 800, letterSpacing: -6 }}>PARTH PANCHAL</div>
         <div style={{ marginTop: 24, fontSize: 30, color: "#5878b8" }}>Frontend Developer / React / Web</div>
       </div>
-      <div style={{ fontSize: 20, letterSpacing: 2 }}>parthpanchal7.github.io</div>
+      <div style={{ fontSize: 20, letterSpacing: 2 }}>revamped-portfolio.netlify.app</div>
     </div>,
     size,
   );
