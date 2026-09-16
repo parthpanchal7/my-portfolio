@@ -1,49 +1,41 @@
 export const note = {
-  slug: "component-actually-deserve-to-exist",
+  slug: "when-the-plugin-isnt-the-answer",
   number: "002",
-  category: "React",
-  title: "When does a component actually deserve to exist?",
-  description: "Thoughts on reusable UI without turning a simple interface into an architecture exercise.",
-  date: "2026-09-13",
+  category: "WordPress / Engineering",
+  title: "When the plugin is not the answer.",
+  description: "How I decide between a plugin, a small custom function and a proper piece of frontend or WordPress code.",
+  date: "2026-09-16",
   readTime: "7 min read",
 };
 
-# When does a component actually deserve to exist?
+# When the plugin is not the answer.
 
-One of the easiest ways to make a frontend codebase harder to work with is to abstract too early.
+Working with WordPress teaches you very quickly that there is almost always a plugin for the problem in front of you.
 
-A component feels productive because it gives a name to a piece of UI. But a name alone does not make an abstraction useful.
+Forms, filters, SEO, caching, custom fields, imports, redirects, accessibility, WooCommerce behavior — the ecosystem is huge. The harder question is whether adding another plugin is actually the right engineering decision.
 
-## Repetition is a signal, not a command
+## I ask what the feature really needs
 
-Seeing the same markup twice does not always mean it needs a component. Sometimes the differences are more important than the similarities.
+If a plugin solves a broad problem that the site genuinely needs, it can be the right choice.
 
-I look for repeated structure, repeated behaviour, or a meaningful concept before extracting something.
+But sometimes the requirement is much smaller. A custom WooCommerce checkbox, a tiny frontend filter, a specific API response or a small admin workflow does not necessarily need an entire plugin with its own settings, scripts and update cycle.
 
-For example, a `ProjectCard` can make sense when projects share a real interaction and visual contract. A `WrapperWithGap` component usually tells me that CSS has been replaced with ceremony.
+In those cases, a focused piece of code can be easier to understand and maintain.
 
-## Prefer the smallest useful boundary
+## The smallest useful solution usually wins
 
-A good component boundary makes a change easier to reason about. It should answer a question such as:
+I try to avoid both extremes: installing a plugin for every small requirement and writing everything from scratch just to prove I can.
 
-> What part of this interface has its own responsibility?
+The useful middle ground is to understand the platform first. WordPress hooks, WooCommerce data, ACF, REST endpoints, browser events and existing theme behavior often give you enough control to solve a specific problem cleanly.
 
-That responsibility might be a navigation system, a form field, a project preview, or an interactive menu.
+## Custom code still needs boundaries
 
-The boundary should not exist just because a file became long.
+A custom solution is not automatically better. It still needs sanitization, escaping, capability checks, predictable naming and a clear place in the codebase.
 
-## Abstraction has a maintenance cost
+The point is not fewer plugins at any cost. The point is knowing what you are adding and why it belongs there.
 
-Every reusable component introduces another API to understand: props, variants, defaults, composition rules and edge cases.
+## This matters even more on production sites
 
-That cost is worth paying when it removes more complexity than it creates.
+A feature that works on a development site is only part of the job. I also have to think about updates, caching, existing plugins, theme behavior and what happens when another developer has to touch the code later.
 
-It is not worth paying simply to make a folder tree look sophisticated.
-
-## Let the interface teach you
-
-I prefer to build the first version of a UI with enough duplication to reveal its real patterns. After using it at a few sizes and states, the useful abstractions tend to become obvious.
-
-The result is usually fewer components, clearer props and a codebase that reflects the actual interface rather than an imagined future one.
-
-Good component architecture is not about extracting everything. It is about choosing where a boundary makes the work easier.
+That is why I prefer small, explicit solutions when the requirement is small — and established plugins when the problem is genuinely bigger than a few lines of custom code.
