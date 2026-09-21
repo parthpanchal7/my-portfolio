@@ -1,22 +1,22 @@
 import Hero from "./hero/Hero";
-import Intro from "./intro/Intro";
+import About from "./about/About";
 import Work from "./work/Work";
 import Capabilities from "./capabilities/Capabilities";
 import Journal from "./journal/Journal";
 import Philosophy from "./philosophy/Philosophy";
-import About from "./about/About";
+import Intro from "./intro/Intro";
 import Contact from "./contact/Contact";
 
 export default function Portfolio() {
   return (
     <main>
       <Hero />
-      <Intro />
+      <About />
       <Work />
       <Capabilities />
       <Journal />
       <Philosophy />
-      <About />
+      <Intro />
       <Contact />
     </main>
   );
