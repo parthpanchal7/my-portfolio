@@ -4,9 +4,17 @@ export default function Intro() {
       <div className="intro-inner">
         <div className="mono">/ 02 — Introduction</div>
         <div>
-          <p className="intro-copy">I care about the space between a <em>good design</em> and a <em>great interface</em> — the structure, behavior and details that make a website feel finished.</p>
+          <p className="intro-copy">
+            I work where <em>design meets the browser</em> — turning layouts into
+            responsive interfaces that feel considered, behave properly and hold
+            up beyond the first screen.
+          </p>
           <div className="intro-bottom">
-            <p>Not a list of technologies. Not a collection of screenshots. The work here is about how ideas become real, responsive interfaces.</p>
+            <p>
+              My work moves between React, WordPress, Shopify and JavaScript.
+              The tools change, but the job stays the same: make the idea work
+              in the real world.
+            </p>
             <span className="mono">React / JavaScript / WordPress / Shopify</span>
           </div>
         </div>
