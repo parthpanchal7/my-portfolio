@@ -11,7 +11,10 @@ export default function About() {
           <h2>FRONTEND<br />DEVELOPER.</h2>
           <p>I'm Parth Panchal. I enjoy the part between a design file and a finished interface — taking a visual idea and figuring out how it should actually behave in the browser.</p>
           <div className="about-details mono"><span>India</span><span>/</span><span>Frontend Development</span><span>/</span><span>React / WordPress / Shopify</span></div>
-          <div className="about-links mono"><a href="https://github.com/parthpanchal7/my-portfolio">GitHub ↗</a><a href="https://www.linkedin.com/in/parth-panchal-a3992ba8/">LinkedIn ↗</a></div>
+          <div className="about-links mono">
+            <a href="https://github.com/parthpanchal7/my-portfolio" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+            <a href="https://www.linkedin.com/in/parth-panchal-a3992ba8/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+          </div>
         </div>
       </div>
     </section>
